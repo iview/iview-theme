@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+
+const program = require('commander')
+const path = require('path')
+const build = require('../lib/build')
+
+program
+  .option('-o, --output <dir>', 'output to a directory', 'dist')
+  .parse(process.argv)
+
+const output = path.resolve(program.output)
+build(output)

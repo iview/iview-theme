@@ -1,0 +1,54 @@
+#!/usr/bin/env node
+
+const program = require('commander')
+const path = require('path')
+const exists = require('fs').existsSync
+const inquirer = require('inquirer')
+const ora = require('ora')
+const download = require('download-git-repo')
+const rimraf = require('rimraf')
+const ncp = require('ncp').ncp
+
+program
+  .usage('[dir]')
+  .parse(process.argv)
+
+const dir = program.args[0]
+const inPlace = !dir || dir === '.'
+const to = path.resolve(dir || '.')
+const tmp = path.resolve(to, './tmp')
+
+if (exists(to)) {
+  inquirer.prompt([{
+    type: 'confirm',
+    message: inPlace
+      ? 'Generate project in current directory?'
+      : 'Target directory exists. Continue?',
+    name: 'ok'
+  }]).then(answers => {
+    if (answers.ok) downloadAndGenerate()
+  })
+} else {
+  downloadAndGenerate()
+}
+
+
+function downloadAndGenerate () {
+  const spinner1 = ora('downloading template').start()
+  download('iview/iview', tmp, err => {
+    if (err) return spinner1.fail('Failed to download template')
+    spinner1.succeed()
+
+    const spinner2 = ora('copying styles').start()
+    ncp(path.resolve(tmp, './src/styles'), to, err => {
+      if (err) return spinner2.fail('Failed to copy styles')
+      spinner2.succeed()
+
+      const spinner3 = ora('deleting template').start()
+      rimraf(tmp, err => {
+        if (err) return spinner3.fail('Failed to copy styles')
+        spinner3.succeed('succeed! Now you can edit `custom.less` to make your theme.')
+      })
+    })
+  })
+}

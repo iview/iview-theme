@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+
+require('commander')
+  .version(require('../package').version)
+  .usage('<command> [options]')
+  .command('init', 'init a new theme template')
+  .command('build', 'build the theme')
+  .parse(process.argv)

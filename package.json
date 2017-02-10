@@ -1,0 +1,45 @@
+{
+  "name": "iview-theme",
+  "version": "1.0.0",
+  "description": "Theme generator cli tool for iview",
+  "main": "index.js",
+  "bin": {
+    "iview-theme": "./bin/iview-theme",
+    "iview-theme-init": "./bin/iview-theme-init",
+    "iview-theme-build": "./bin/iview-theme-build"
+  },
+  "files": [
+    "bin",
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jingsam/iview-theme.git"
+  },
+  "keywords": [
+    "iview",
+    "vue",
+    "theme",
+    "cli"
+  ],
+  "author": "jingsam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jingsam/iview-theme/issues"
+  },
+  "homepage": "https://github.com/jingsam/iview-theme#readme",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "download-git-repo": "^0.2.1",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-clean-css": "^3.0.2",
+    "gulp-less": "^3.3.0",
+    "gulp-rename": "^1.2.2",
+    "inquirer": "^3.0.1",
+    "ncp": "^2.0.0",
+    "ora": "^1.1.0",
+    "rimraf": "^2.5.4",
+    "run-sequence": "^1.2.2"
+  }
+}
