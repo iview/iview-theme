@@ -11,9 +11,14 @@ npm i iview-theme -g
 ## Usage
 
 Initialize a theme project
-"xxx" means iview tags or releases number, example: v2.14.3
+"xxx" means iview tags or releases number, example: v2.14.3.
+If you havn't defined the version number, it will use the latest version.
 
 ```
+iview-theme init my-theme
+
+or
+
 iview-theme init my-theme xxx
 ```
 
