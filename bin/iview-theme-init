@@ -14,6 +14,7 @@ program
   .parse(process.argv)
 
 const dir = program.args[0]
+const tag = program.args[1]
 const inPlace = !dir || dir === '.'
 const to = path.resolve(dir || '.')
 const tmp = path.resolve(to, './tmp')
@@ -35,7 +36,7 @@ if (exists(to)) {
 
 function downloadAndGenerate () {
   const spinner1 = ora('downloading template').start()
-  download('iview/iview', tmp, err => {
+  download('iview/iview#' + tag, tmp, err => {
     if (err) return spinner1.fail('Failed to download template')
     spinner1.succeed()
 
