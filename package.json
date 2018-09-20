@@ -30,7 +30,7 @@
   "homepage": "https://github.com/jingsam/iview-theme#readme",
   "dependencies": {
     "commander": "^2.9.0",
-    "download-git-repo": "^0.2.1",
+    "download-git-repo": "^1.1.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-clean-css": "^3.0.2",
